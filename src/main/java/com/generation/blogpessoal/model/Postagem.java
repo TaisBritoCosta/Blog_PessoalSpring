@@ -1,7 +1,8 @@
 package com.generation.blogpessoal.model;
 
 import java.time.LocalDateTime;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "tb_postagens") // create table tb_postagens
 
@@ -21,6 +24,7 @@ public class Postagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//AUTO_INCREMENT
 	private Long id;
+	
 	@NotBlank(message = "O atributo Texto é obrigatório!")
 	@Size(min = 10, max = 1000, message = "O atributo Texto deve conter no minino 10 e no maximo 1000 caracteres." )
 	private String titulo;
@@ -30,8 +34,9 @@ public class Postagem {
 	private String texto;
 	
 	@UpdateTimestamp
-	
 	private LocalDateTime data;
+	
+	
 	public Long getId() {
 		return id;
 	}
